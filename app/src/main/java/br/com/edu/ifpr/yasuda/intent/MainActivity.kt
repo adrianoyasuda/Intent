@@ -21,12 +21,12 @@ class MainActivity : AppCompatActivity() {
 
         bt_site.setOnClickListener {
             val uri = Uri.parse("http://google.com")
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
+            val intent = Intent(Intent.ACTION_VIEW, uri)             // explict intent to view an uri by clicking of button
+            startActivity(intent)                                     //passing intent so that activity start on click of button
         }
 
         bt_email.setOnClickListener {
-            mandaremail()
+            mandaremail()                  //function calling to email intent function
         }
 
         bt_msg.setOnClickListener {
@@ -60,8 +60,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun mandaremail() {
         val emailIntent = Intent(Intent.ACTION_SEND)
-        with(emailIntent) {
-            putExtra(Intent.EXTRA_SUBJECT, "Título do email")
+        with(emailIntent) {                                          // intent used to send email 
+            putExtra(Intent.EXTRA_SUBJECT, "Título do email")              //  we can also use apply there insted of with 
             putExtra(Intent.EXTRA_TEXT, "Olá")
             putExtra(Intent.EXTRA_EMAIL, "diego.stiehl@ifpr.edu.br")
             type = "message/rfc822"
@@ -70,15 +70,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun mandamsg(){
-        val uri = Uri.parse("sms: 91776067")
-        val smsIntent = Intent(Intent.ACTION_SENDTO, uri)
+        val uri = Uri.parse("sms: 91776067")                                  //intent to view uri
+        val smsIntent = Intent(Intent.ACTION_SENDTO, uri)                       //Intent.ACTION_SENDTO this means what is the motiv of intent
         smsIntent.putExtra("sms_body", "Perdi!")
         startActivity(smsIntent)
     }
 
     private fun abrirlocation(){
         val GEO_URI = "geo:-25.4089185,-49.3222402"
-        intent = Intent(Intent.ACTION_VIEW, Uri.parse(GEO_URI))
+        intent = Intent(Intent.ACTION_VIEW, Uri.parse(GEO_URI))               
         startActivity(intent)
     }
 
